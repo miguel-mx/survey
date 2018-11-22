@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{# app/Resources/views/security/login.html.twig #}
+{# ... you will probably extend your base template, like base.html.twig #}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/signin.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    <div class="text-center"><img src="{{ asset('img/ccmlogo200x100.png') }}"> </div>
+    <h5 class="text-secondary text-center">Encuesta Conversión a Instituto</h5>
+
+    {% if error %}
+        <div class="text-center text-danger">
+            {{ error.messageKey|trans(error.messageData, 'security') }}
+        </div>
+    {% endif %}
+
+    <form class="form-signin" action=""{{ path('login') }}" method="post">
+
+        <h4 class="text-muted"><small>Sign in</small></h4>
+        <div class="form-group">
+            <label class="sr-only" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="text" class="form-control" placeholder="username" id="username" name="_username" value="{{ last_username }}" required="required" />
+        </div>
+
+        <div class="form-group">
+            <label class="sr-only" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+            <input type="password" class="form-control" placeholder="password" id="password" name="_password" required="required" />
+        </div>
+
+        <input  class="btn btn-primary btn-block" type="submit" id="_submit" name="_submit" value="Login" />
+    </form>
+
+    {#<form action="{{ path('login') }}" method="post">#}
+    {#<label for="username">Username:</label>#}
+    {#<input type="text" id="username" name="_username" value="{{ last_username }}" />#}
+
+    {#<label for="password">Password:</label>#}
+    {#<input type="password" id="password" name="_password" />#}
+
+    {##}
+        {#If you want to control the URL the user#}
+        {#is redirected to on success (more details below)#}
+        {#<input type="hidden" name="_target_path" value="/account" />#}
+    {##}
+
+    {#<button type="submit">login</button>#}
+{#</form>#}
+
+{% endblock %}

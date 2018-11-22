@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Respuestum</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ respuestum.id }}</td>
+            </tr>
+            <tr>
+                <th>Respuesta</th>
+                <td>{% if respuestum.respuesta %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comentarios</th>
+                <td>{{ respuestum.comentarios }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('respuesta_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('respuesta_edit', { 'id': respuestum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
