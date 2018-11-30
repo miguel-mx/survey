@@ -15,7 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class AcademicoController extends Controller
 {
     /**
-     * Lists all respuestum entities.
+     * Envía correos.
      *
      * @Route("/correos", name="academico_correos")
      * @Method("GET")
@@ -43,8 +43,16 @@ class AcademicoController extends Controller
             // Si no tiene respuesta enviar correo
             if(!$academico->getRespuesta()) {
 
-
-
+                $mailer = $this->get('mailer');
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Consulta: transformación a Instituto')
+                    ->setFrom('info@matmor.unam.mx')
+//            ->setTo('miguel@matmor.unam.mx')
+                    ->setTo($user->getEmail())
+                    ->setBcc(array('rudos@matmor.unam.mx'))
+                    ->setBody($this->renderView(':respuesta:email.txt.twig', array('academico' => $academico)))
+                ;
+                $mailer->send($message);
             }
         }
 

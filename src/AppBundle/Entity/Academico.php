@@ -39,6 +39,13 @@ class Academico
     private $apellido;
 
     /**
+     * @var string
+     *
+     *  * @ORM\Column(name="email", type="string", length=120)
+     */
+    protected $email;
+
+    /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank()
      */
@@ -347,6 +354,22 @@ class Academico
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
     }
 
 }

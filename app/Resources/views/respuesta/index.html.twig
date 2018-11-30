@@ -23,13 +23,13 @@
             <canvas id="doughnut-chart" width="600" height="350"></canvas>
         </div>
     </div>
-    <div class="row justify-content-md-center mb-5">
-        <div class="col-md-6 col-xs-12">
-            <canvas id="bar-chart" width="600" height="450"></canvas>
-        </div>
-    </div>
+    {#<div class="row justify-content-md-center mb-5">#}
+        {#<div class="col-md-6 col-xs-12">#}
+            {#<canvas id="bar-chart" width="600" height="450"></canvas>#}
+        {#</div>#}
+    {#</div>#}
 
-    <h2 class="mb-4">Total de respuestas: {{ respuestas|length }}</h2>
+    <h2 class="mb-4">Participación: {{ respuestas|length }} académicos</h2>
 
     <h2 class="text-secondary mb-4"><i class="fa fa-comment"></i> Comentarios</h2>
 
@@ -61,7 +61,7 @@
                         label: "Respuesta de los académicos",
                         // backgroundColor: ["#66BB6A", "#ef5350", "#FFEE58"],
                         fill: false,
-                        backgroundColor: ["rgba(76,175,80,1)", "rgba(244,67,54,1)", "rgba(255,235,59,1)"],
+                        backgroundColor: ["rgba(76,175,80,0.6)", "rgba(244,67,54,0.6)", "rgba(255,235,59,0.6)"],
                         data: [{{ si }},{{ no }},{{ na }}]
                     }
                 ]
@@ -69,64 +69,45 @@
             options: {
                 title: {
                     display: true,
-                    text: 'Respuestas de los académicos'
+                    text: 'Respuestas de Académicos'
                 }
             }
         });
 
     </script>
 
-    <script>
-        new Chart(document.getElementById("bar-chart"), {
-            type: 'bar',
-            data: {
-                labels: ["Si", "No", "Sin participación"],
-                datasets: [
-                    {
-                        label: "Aprobación",
+    {#<script>#}
+        {#new Chart(document.getElementById("bar-chart"), {#}
+            {#type: 'bar',#}
+            {#data: {#}
+                {#labels: ["Si", "No", "Sin participación"],#}
+                {#datasets: [#}
+                    {#{#}
+                        {#label: "Aprobación",#}
                         {#data: [{{ si }},{{ no }},{{ na }}]#}
-                        data: [33, 56, 42],
-                        fill: false,
-                        backgroundColor: ["rgb(152, 251, 152, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 205, 86, 0.2)"],
-                        borderColor: ["rgb(136, 255, 97)", "rgb(255, 99, 132)", "rgba(255, 205, 86)"],
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                title: {
-                    display: true,
-                    text: 'Respuestas de los académicos'
-                },
-                scales : {
-                    "yAxes":[{
-                        "ticks":{
-                            "beginAtZero":true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
-    <script>
-        new Chart(document.getElementById("chartjs-1"),{
-            "type":"bar",
-            "data":{"labels":["January","February","March","April","May","June","July"],
-                "datasets":[
-                    {
-                        "label":"My First Dataset",
-                        "data":[65,59,80,81,56,55,40],
-                        "fill":false,
-                        "backgroundColor":["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],
-                        "borderColor":["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],
-                        "borderWidth":1
-                    }
-                ]
-            },
-            "options":{
-                "scales":{"yAxes":[{"ticks":{"beginAtZero":true}}]}
-            }
-        });
-    </script>
+                        {#data: [33, 56, 42],#}
+                        {#fill: false,#}
+                        {#backgroundColor: ["rgba(159, 236, 138, 0.2)", "rgba(255, 99, 132, 0.2)", "rgba(255, 205, 86, 0.2)"],#}
+                        {#borderColor: ["rgb(159, 236, 138)", "rgb(255, 99, 132)", "rgba(255, 205, 86)"],#}
+                        {#borderWidth: 1#}
+                    {#}#}
+                {#]#}
+            {#},#}
+            {#options: {#}
+                {#title: {#}
+                    {#display: true,#}
+                    {#text: 'Respuestas de Académicos',#}
+                    {#fontSize: 18#}
+                {#},#}
+                {#scales : {#}
+                    {#"yAxes":[{#}
+                        {#"ticks":{#}
+                            {#"beginAtZero":true#}
+                        {#}#}
+                    {#}]#}
+                {#}#}
+            {#}#}
+        {#});#}
+    {#</script>#}
 
 {% endblock %}
