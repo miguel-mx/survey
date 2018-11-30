@@ -47,11 +47,10 @@ class AcademicoController extends Controller
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Consulta: transformación a Instituto')
                     ->setFrom('info@matmor.unam.mx')
-//            ->setTo('miguel@matmor.unam.mx')
-                    ->setTo($user->getEmail())
-                    ->setBcc(array('rudos@matmor.unam.mx'))
-                    ->setBody($this->renderView(':respuesta:email.txt.twig', array('academico' => $academico)))
-                ;
+                    //            ->setTo('miguel@matmor.unam.mx')
+                    ->setTo($academico->getEmail())
+                    ->setBcc('rudos@matmor.unam.mx')
+                    ->setBody($this->renderView(':respuesta:email.txt.twig', array('academico' => $academico)));
                 $mailer->send($message);
             }
         }

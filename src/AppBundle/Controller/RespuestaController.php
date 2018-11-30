@@ -81,7 +81,6 @@ class RespuestaController extends Controller
                 'Solo es posible participar una vez!'
             );
 
-            var_dump($academico->getRespuesta());
             return $this->redirectToRoute('respuesta_index');
         }
 
