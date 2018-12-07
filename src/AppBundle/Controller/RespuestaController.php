@@ -67,7 +67,7 @@ class RespuestaController extends Controller
     {
 
         $now = new \DateTime();
-        $deadline = new \DateTime('2018-12-08');
+        $deadline = new \DateTime('2018-12-07T18:41');
         if($now >= $deadline)
             return $this->render(':respuesta:closed.html.twig');
 
